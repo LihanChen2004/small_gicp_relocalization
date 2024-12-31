@@ -32,4 +32,4 @@ jobs:
 
       - name: Test small_gicp_relocalization
         run: |
-          colcon test --packages-up-to small_gicp_relocalization --event-handlers console_cohesion+ --return-code-on-test-failure
+          /usr/bin/bash .github/workflows/colcon_test.sh small_gicp_relocalization
