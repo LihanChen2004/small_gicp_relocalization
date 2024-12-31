@@ -11,6 +11,9 @@ jobs:
     container:
       image: rostooling/setup-ros-docker:ubuntu-jammy-ros-humble-desktop-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
       - name: Install small_gicp
         run: |
           git clone https://github.com/koide3/small_gicp.git
