@@ -1,4 +1,4 @@
-name: Build
+name: Build and Test
 on:
   push:
     branches: [ main ]
@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     container:
       image: rostooling/setup-ros-docker:ubuntu-jammy-ros-humble-desktop-latest
@@ -25,3 +25,8 @@ jobs:
         with:
           package-name: small_gicp_relocalization
           target-ros2-distro: humble
+          skip-tests: true
+
+      - name: Test small_gicp_relocalization
+        run: |
+          colcon test --packages-up-to small_gicp_relocalization --event-handlers console_cohesion+ --return-code-on-test-failure
